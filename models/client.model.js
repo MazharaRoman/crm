@@ -2,25 +2,23 @@
 var mongoose = require('mongoose');
 
 var ClientSchema = new mongoose.Schema({
-    m: string,
-    p: string,
-    name: string,
-    comercialName: string,
-    phone: string,
-    city: string,
-    postCode: number,
-    region: string,
-    address: string,
-    taxNumber: number,
-    vatNumber: number,
-    contacts: string,
-    contact: {
-        number: string,
+    m: String,
+    p: String,
+    name: String,
+    commercialName: String,
+    phone: String,
+    city: String,
+    postCode: Number,
+    region: String,
+    address: String,
+    taxNumber: Number,
+    vatNumber: Number,
+    contacts: String,
+    contract: {
+        number: String,
         date: Date
     },
-    prices: any[],
-    created_at: { type: Date, default: Date.now },
-    updated_at: { type: Date, default: Date.now },
+    prices: Array
 });
 
 module.exports = mongoose.model('Client', ClientSchema);

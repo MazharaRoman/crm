@@ -6,9 +6,7 @@ var ProductSchema = new mongoose.Schema({
   scale: String,
   code: String,
   certificate: String,
-  amount: Number,
-  created_at: { type: Date, default: Date.now },
-  updated_at: { type: Date, default: Date.now },
+  amount: Number
 });
 
 module.exports = mongoose.model('Product', ProductSchema);

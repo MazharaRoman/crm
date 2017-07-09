@@ -9,6 +9,7 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var drivers = require('./routes/drivers.router');
 var products = require('./routes/product.router');
+var clients = require('./routes/client.router');
 
 var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
@@ -45,6 +46,7 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/drivers', drivers);
 app.use('/products', products);
+app.use('/clients', clients);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
