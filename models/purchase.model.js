@@ -21,5 +21,12 @@ var PurchaseSchema = new mongoose.Schema({
     type: Number
 }, { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } });
 
+PurchaseSchema.statics.findMode = function (mode, id) {
+    let query = id ? this.findById(id) : this.find();
+    if(mode.aggregate === "true") {
+        return query.populate('_client').populate({ path: 'products._product', model: 'Product'}) 
+    }
+    return query;
+}
 
 module.exports = mongoose.model("Purchase", PurchaseSchema);

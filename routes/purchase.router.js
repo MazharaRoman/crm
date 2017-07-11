@@ -7,7 +7,7 @@ var Purchase = require('../models/purchase.model.js');
 
 
 router.get('/', function(req, res, next) {
-  Purchase.find().populate({ path: 'products._product', model: 'Product'}).exec(function (err, purchases) {
+  Purchase.findMode(req.query).exec(function (err, purchases) {
     if (err) return next(err);
     res.json(purchases);
   });
@@ -21,7 +21,7 @@ router.post('/', function(req, res, next) {
 });
 
 router.get('/:id', function(req, res, next) {
-  Purchase.findById(req.params.id, (err, purchase) => {
+  Purchase.findMode(req.query, req.params.id).exec((err, purchase) => {
     if (err) return next(err);
     res.json(purchase);
   });
