@@ -1,19 +1,25 @@
 var mongoose = require('mongoose');
+var ObjectId = mongoose.Schema.ObjectId;
 
 var PurchaseSchema = new mongoose.Schema({
-  _product: {
-      _id: {
-      type: mongoose.Schema.ObjectId,
-      ref: 'Product'
+    _client: {
+        type: ObjectId,
+        ref: "Client"
     },
-    name: String,
-    description: String,
-    scale: String,
-    code: String,
-    certificate: String,
-    amount: Number
-  },
-  amount: Number
-});
+    products: [{
+        _id: { reture: false },
+        _product: {
+            type: ObjectId,
+            require: true,
+            ref: "Product"
+        },
+        description: String,
+        amount: Number,
+        price_uah: Number
+    }],
+    total: Number,
+    type: Number
+}, { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } });
 
-module.exports = mongoose.model('Purchase', PurchaseSchema);
+
+module.exports = mongoose.model("Purchase", PurchaseSchema);

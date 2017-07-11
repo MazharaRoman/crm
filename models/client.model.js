@@ -1,5 +1,5 @@
-
 var mongoose = require('mongoose');
+var ObjectId = mongoose.Schema.ObjectId;
 
 var ClientSchema = new mongoose.Schema({
     m: String,
@@ -18,7 +18,13 @@ var ClientSchema = new mongoose.Schema({
         number: String,
         date: Date
     },
-    prices: Array
+    prices: [{
+        _product: {
+            type: ObjectId,
+            ref: "product"
+        },
+        value: Number
+    }]
 });
 
 module.exports = mongoose.model('Client', ClientSchema);

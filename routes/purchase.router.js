@@ -7,8 +7,7 @@ var Purchase = require('../models/purchase.model.js');
 
 
 router.get('/', function(req, res, next) {
-    console.log("op");
-  Purchase.find().populate('product').exec(function (err, purchases) {
+  Purchase.find().populate({ path: 'products._product', model: 'Product'}).exec(function (err, purchases) {
     if (err) return next(err);
     res.json(purchases);
   });
