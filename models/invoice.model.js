@@ -1,7 +1,7 @@
-var mongoose = require('mongoose');
-var ObjectId = mongoose.Schema.ObjectId;
+let mongoose = require('mongoose');
+let ObjectId = mongoose.Schema.ObjectId;
 
-var PurchaseSchema = new mongoose.Schema({
+let InvoiceSchema = new mongoose.Schema({
     _client: {
         type: ObjectId,
         ref: "Client"
@@ -21,12 +21,12 @@ var PurchaseSchema = new mongoose.Schema({
     type: Number
 }, { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } });
 
-PurchaseSchema.statics.findMode = function (mode, id) {
+InvoiceSchema.statics.findMode = function (mode, id) {
     let query = id ? this.findById(id) : this.find();
-    if(mode.aggregate === "true") {
-        return query.populate('_client').populate({ path: 'products._product', model: 'Product'}) 
+    if (mode.aggregate === "true") {
+        return query.populate('_client').populate({path: 'products._product', model: 'Product'})
     }
     return query;
-}
+};
 
-module.exports = mongoose.model("Purchase", PurchaseSchema);
+module.exports = mongoose.model("Invoice", InvoiceSchema);

@@ -35,8 +35,6 @@ router.delete('/:id', function(req, res, next) {
 });
 
 router.put('/:id', function(req, res, next) {
-
-  console.log(req.body.client);
     Client.findByIdAndUpdate(req.params.id, { $set: req.body.client }, { new: true }, (err, client) => {
         if (err) return next(err);
         res.json(client);

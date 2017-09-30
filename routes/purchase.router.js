@@ -3,7 +3,7 @@ var router = express.Router();
 
 
 var mongoose = require('mongoose');
-var Purchase = require('../models/purchase.model.js');
+var Purchase = require('../models/invoice.model.js');
 
 
 router.get('/', function(req, res, next) {

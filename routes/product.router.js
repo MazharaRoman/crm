@@ -3,7 +3,7 @@ var router = express.Router();
 
 
 var mongoose = require('mongoose');
-var Product = require('../models/Product.model.js');
+var Product = require('../models/product.model');
 
 
 router.get('/', function(req, res, next) {

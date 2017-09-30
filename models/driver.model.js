@@ -1,7 +1,6 @@
+const mongoose = require('mongoose');
 
-var mongoose = require('mongoose');
-
-var DriverSchema = new mongoose.Schema({
+const DriverSchema = new mongoose.Schema({
 	plates: String,
 	car: String,
 	driver: String
